@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export function Diagramas() {
   return (<Container>
-<h1>Diagramas</h1>
+<h1>Favoritos</h1>
   </Container>);
 }
 const Container =styled.div`
