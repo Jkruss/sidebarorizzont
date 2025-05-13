@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import logo from "../assets/react.svg";
 import { v } from "../styles/Variables";
 import {
-  AiOutlineLeft,
   AiOutlineHome,
   AiOutlineApartment,
   AiOutlineSetting,
@@ -11,6 +9,12 @@ import { MdOutlineAnalytics, MdLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
+import { IoMdBicycle } from "react-icons/io";
+import { FaNewspaper } from "react-icons/fa";
+import { FaInfoCircle } from "react-icons/fa"
+import { FaStar } from "react-icons/fa";
+import { MdMessage } from "react-icons/md";
+
 export function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const ModSidebaropen = () => {
     setSidebarOpen(!sidebarOpen);
@@ -23,14 +27,8 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
     <Container isOpen={sidebarOpen} themeUse={theme}>
       <button className="Sidebarbutton" onClick={ModSidebaropen}>
-        <AiOutlineLeft />
+        <IoMdBicycle />
       </button>
-      <div className="Logocontent">
-        <div className="imgcontent">
-          <img src={logo} />
-        </div>
-        <h2>Orizzont</h2>
-      </div>
       {linksArray.map(({ icon, label, to }) => (
         <div className="LinkContainer" key={label}>
           <NavLink
@@ -81,8 +79,13 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
 //#region Data links
 const linksArray = [
   {
+    label: "Nueva Ruta",
+    icon: <IoMdBicycle/>,
+    to: "/crearrutas",
+  },
+  {
     label: "Noticias",
-    icon: <AiOutlineHome />,
+    icon: <FaNewspaper />,
     to: "/",
   },
   {
@@ -92,25 +95,25 @@ const linksArray = [
   },
   {
     label: "Informacion",
-    icon: <AiOutlineApartment />,
-    to: "/productos",
+    icon: <FaInfoCircle />,
+    to: "/informacion",
   },
   {
     label: "Favoritos",
-    icon: <MdOutlineAnalytics />,
-    to: "/diagramas",
+    icon: <FaStar />,
+    to: "/favoritos",
   },
   {
     label: "Mensajes",
-    icon: <MdOutlineAnalytics />,
-    to: "/reportes",
+    icon: <MdMessage />,
+    to: "/mensajes",
   },
 ];
 const secondarylinksArray = [
   {
     label: "Configuración",
     icon: <AiOutlineSetting />,
-    to: "/null",
+    to: "/configuracion",
   },
   {
     label: "Salir",
@@ -126,6 +129,7 @@ const Container = styled.div`
   background: ${(props) => props.theme.bg};
   position: sticky;
   padding-top: 20px;
+  height: 1000px;
   .Sidebarbutton {
     position: absolute;
     top: ${v.xxlSpacing};
